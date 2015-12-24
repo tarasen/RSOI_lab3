@@ -1,0 +1,43 @@
+﻿@Master['master']
+
+@Section['Content']
+<p>
+    <font size="5">
+        <b>Изменение картины</b>
+    </font>
+</p>
+
+<form class="form-horizontal" method="Post" action="/pictures/id@!Model.Id/edit">
+    <input type="hidden" name="Id" value="@!Model.Id"/>
+    <br/>
+    <label>Название</label>
+    <input type="text" name="Name" value="@!Model.Name"/>
+    <br/>
+    <br/>
+    <label>Дата написания</label>
+    <input type="text" name="CreationDate" value="@!Model.CreationDate"/>
+    <br/>
+    <br/>
+    <label>Матриал</label>
+    <input type="text" name="Material" value="@!Model.Material"/>
+    <br/>
+    <br/>
+    <label>Галерея</label>
+    <input type="text" name="Gallery" value="@!Model.Gallery"/>
+    <br/>
+    <br/>
+    <label>Техника</label>
+    <input type="text" name="Technique" value="@!Model.Technique"/>
+    <br/>
+    <br/>
+    <label>Высота</label>
+    <input type="text" name="Height" value="@!Model.Height"/>
+    <br/>
+    <br/>
+    <label>Ширина</label>
+    <input type="text" name="Width" value="@!Model.Width" />
+    <br />
+    <br />
+    <button type="submit">Подтвердить</button>
+</form>
+@EndSection

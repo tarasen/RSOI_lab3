@@ -1,0 +1,31 @@
+﻿@Master['master']
+
+@Section['Content']
+<p>
+    <font size="5">
+        <b>Изменение художника</b>
+    </font>
+</p>
+
+<form class="form-horizontal" method="post" action="/artists/id@!Model.Id/edit">
+    <input type="hidden" name="Id" value="@!Model.Id" />
+    <br />
+    <label>Фамилия, Имя</label>
+    <input type="text" name="Name" value="@!Model.Name" />
+    <br />
+    <br />
+    <label>Дата рождения</label>
+    <input type="text" name="BirthDate" value="@!Model.BirthDate" />
+    <br />
+    <br />
+    <label>Дата смерти</label>
+    <input type="text" name="DeathDate" value="@!Model.DeathDate" />
+    <br />
+    <br />
+    <label>Национальность</label>
+    <input type="text" name="Nation" value="@!Model.Nation" />
+    <br />
+    <br />
+    <button type="submit">Подтвердить</button>
+</form>
+@EndSection

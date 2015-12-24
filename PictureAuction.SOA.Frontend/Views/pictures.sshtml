@@ -1,0 +1,43 @@
+﻿@Master['master']
+
+@Section['Content']
+<table class="table">
+    <tr>        
+        @If.Authorized
+        <th>№</th>
+        @EndIf
+        <th>Название</th>
+        <th>Год написания</th> 
+    </tr>    
+    @If.Model.Authorized
+    @Each.Items
+    <tr>
+        <td>@Current.Id</td>
+        <td><a href="@Path['~/pictures/id@!Current.Id']">@!Current.Name</a></td>
+        <td>@Current.CreationDate</td>
+        </tr>
+    @EndEach    
+    @EndIf    
+
+    @IfNot.Model.Authorized
+    @Each.Items
+    <tr>
+        <td><a href="@Path['~/pictures/id@!Current.Id']">@!Current.Name</a></td>
+        <td>@Current.CreationDate</td>
+    </tr>
+    @EndEach    
+    @EndIf    
+</table>
+<p>
+    @IfNotNull.Model.PrevPage
+    <a href="@Path['~/pictures?page=@!Model.PrevPage']">《 предыдущая страница</a>
+    @EndIf
+    |
+    @IfNotNull.Model.NextPage
+    <a href="@Path['~/pictures?page=@!Model.NextPage']">следующая страница 》</a>
+    @EndIf
+</p> 
+@IfNotNull.Context.CurrentUser
+<p><a href="@Path['~/pictures/add']">Добавить</a></p>
+@EndIf
+@EndSection

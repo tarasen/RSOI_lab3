@@ -1,0 +1,55 @@
+﻿@Master['master']
+
+@Section['Content']
+@IfNotNull.Image
+<p>
+    <img alt="" src="data:image/jpeg;base64,@Model.Image" />
+</p>
+@EndIf
+<p>
+    <h1><b>@!Model.Name</b></h1>
+    <br />
+    <h3>@!Model.CreationDate год</h3>
+</p>
+
+<var>
+    @If.HasGenres
+    <p>
+        Жанры:  @Each.Genres
+        @!Current,
+        @EndEach
+    </p>
+    @EndIf
+    @IfNotNull.Model.Material
+    <p>Материал: @!Model.Material;</p>
+    @EndIf
+    @IfNotNull.Model.Technique
+    <p>Техника: @!Model.Technique;</p>
+    @EndIf
+    @IfNotNull.Model.Gallery
+    <p>Галерея: @!Model.Gallery;</p>
+    @EndIf
+
+    @IfNotNull.Model.Height
+    <p>
+        Размеры: @!Model.Height x
+        @EndIf
+        @IfNotNull.Model.Width
+        @!Model.Width см<sup>2</sup>
+    </p>
+    @EndIf
+</var>
+</p>
+
+<p>Написана:</p>
+<ul>
+    @Each.ArtistsInfo
+    <li><a href="@Path['~/artists/id@!Current.Id']">@!Current.Name</a>; Автор @!Current.Pictures.Count картин</li>
+    @EndEach
+</ul>
+
+    @If.Model.Authorized
+<p><a href="@Path['~/pictures/id@!Model.Id/edit']">Изменить</a>, <a href="@Path['~/pictures/id@!Model.Id/delete']">Удалить</a></p>
+    @EndIf
+
+    @EndSection

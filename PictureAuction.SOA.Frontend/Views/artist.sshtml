@@ -1,0 +1,47 @@
+﻿@Master['master']
+
+@Section['Content']
+<p>
+    <h1><b>@!Model.Name</b></h1>
+</p>
+<p>
+    @IfNotNull.Model.BirthDate
+    @!Model.BirthDate
+    @EndIf
+    @IfNotNull.Model.DeathDate
+    - @!Model.DeathDate гг.
+    @EndIf
+    @IfNull.Model.DeathDate
+    г.
+    @EndIf
+    @IfNotNull.Model.Nation
+    , @!Model.Nation
+    @EndIf
+<p>
+    Период творчества:
+    @Each.Periods
+    @Current, 
+    @EndEach
+</p>
+
+@IfNotNull.Model.Email
+<p>email: <a href="mailto:@!Model.Email">@!Model.Email</a></p>
+@EndIf
+
+@If.Model.Authorized
+<p><a href="@Path['~/artists/id@!Model.Id/edit']">Изменить</a>, <a href="@Path['~/artists/id@!Model.Id/delete']">Удалить</a></p>
+@EndIf
+
+@If.HasPictures
+<p>
+    <font size="3">
+        <b>Написанные картины</b>
+    </font>
+</p>
+<ul>
+    @Each.PicturesInfo
+    <li><a href="@Path['~/pictures/id@!Current.Id']">@!Current.Name, @!Current.CreationDate</a></li>
+    @EndEach
+</ul>
+@EndIf
+@EndSection

@@ -1,0 +1,20 @@
+﻿@Master['master']
+
+@Section['Content']
+@IfNull.Context.CurrentUser
+<form class="form-horizontal" action="/login" method="post">
+    <br/>
+    <h3>Введите логин и пароль</h3>
+    <br/>
+    <label>Логин</label>
+    <input type="text" name="Login" placeholder="Введите логин"/>
+    <br/>
+    <br/>
+    <label>Пароль</label>
+    <input type="password" name="Password" placeholder="Введите пароль"/>
+    <br/>
+    <br/>
+    <input type="submit" class="btn btn-primary" value="Подтвердить"/>
+</form>
+@EndIf
+@EndSection
